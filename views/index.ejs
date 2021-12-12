@@ -39,6 +39,10 @@
                             <form action="/api/delete/<%= people[index]._id %>?_method=DELETE" method="POST">
                                 <button class="btn btn-danger">Delete</button>
                             </form>
+                            <form action="/new" method="POST">
+                                <input type="hidden" name="id" value="<%= people[index]._id %>">
+                                <button class="btn btn-primary">Update</button>
+                            </form>
                         </td>
                     </tr>
                     <% } %>
@@ -51,7 +55,7 @@
 
         <script>
             const send = document.querySelector('#send');
-            send.addEventListener('click', (e) => {
+            send.addEventListener('click', async (e) => {
                 e.preventDefault();
                 const allCheckboxes = document.querySelectorAll('.form-check-input');
                 let table = document.querySelector('table');
@@ -68,6 +72,11 @@
                     array.push(innerArray);
                     i = 0;
                 }
-                <a href="mailto:prabhatdie@gmail.com">Email</a>
+                // await fetch('/send', {
+                //     method: 'POST',
+                //     body: JSON.stringify(array),
+                //     headers: { 'Content-Type': 'application/json' }
+                // });
+                console.log('an event was fired')
             });
         </script>

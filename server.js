@@ -32,6 +32,36 @@ try{
     console.log('DB CONNECTION FAILED!');
 }
 
+app.patch('/api/update/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { name, email, phoneNumber, hobbies } = req.body;
+        const person = await Person.findByIdAndUpdate(id, {
+            name,
+            email,
+            phoneNumber,
+            hobbies: prepareHobbies(hobbies)
+        }, {
+            new: true
+        });
+        res.status(200).redirect('/');
+    } catch (err) {
+        console.log(err);
+        res.status(400).send('Could not update the data');
+    }
+});
+
+app.post('/new', async (req, res) => {
+    try {
+        const { id } = req.body;
+        const person = await Person.findById(id);
+        res.status(200).render('edit.ejs', { person });
+    } catch (err) {
+        console.log(err);
+        res.status(400).send("Something went wrong");
+    }
+});
+
 app.delete('/api/delete/:id', async (req, res) => {
     try {
         const { id } = req.params;
@@ -41,7 +71,7 @@ app.delete('/api/delete/:id', async (req, res) => {
         console.log(err);
         res.status(400).send('Could not delete the data');
     }
-})
+});
 
 app.post('/', async (req, res) => {
     try {
@@ -63,6 +93,13 @@ app.post('/', async (req, res) => {
         res.status(400).json({ error });
     }
 });
+
+// app.post('/send', async (req, res) => {
+//     const { array } = req.body;
+//     console.log(array)
+//     await main("this is a message");
+//     res.redirect('/');
+// })
 
 app.get('/', async (req, res) => {
     const people = await Person.find({});
