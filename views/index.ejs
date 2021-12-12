@@ -1,2 +1,73 @@
 <% layout('/layouts/boilerplate') %>
 
+    <%- include('partials/modal') %>
+
+        <table class="table table-dark mt-3" id="table">
+            <thead>
+                <tr>
+                    <th scope="col">Select</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Hobbies</th>
+                    <th scope="col">Update/Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for( let index=0; index < people.length; index++ ) { %>
+                    <tr>
+                        <th scope="row">
+                            <input type="checkbox" name="" id="" class="form-check-input">
+                        </th>
+                        <td>
+                            <%= people[index].ID %>
+                        </td>
+                        <td>
+                            <%= people[index].name %>
+                        </td>
+                        <td>
+                            <%= people[index].phoneNumber %>
+                        </td>
+                        <td>
+                            <%= people[index].email %>
+                        </td>
+                        <td>
+                            <%= people[index].hobbies %>
+                        </td>
+                        <td>
+                            <form action="/api/delete/<%= people[index]._id %>?_method=DELETE" method="POST">
+                                <button class="btn btn-danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <% } %>
+            </tbody>
+        </table>
+
+        <button class="btn btn-primary" id="send">
+            Send
+        </button>
+
+        <script>
+            const send = document.querySelector('#send');
+            send.addEventListener('click', (e) => {
+                e.preventDefault();
+                const allCheckboxes = document.querySelectorAll('.form-check-input');
+                let table = document.querySelector('table');
+                let i = 0;
+                let array = [];
+                for (const row of table.rows) {  
+                    let innerArray = [];
+                    for (const cell of row.cells) { 
+                        if(i > 0 && i < 6){
+                            innerArray.push(cell.innerText); 
+                        } 
+                        i++;
+                    }  
+                    array.push(innerArray);
+                    i = 0;
+                }
+                <a href="mailto:prabhatdie@gmail.com">Email</a>
+            });
+        </script>

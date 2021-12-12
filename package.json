@@ -4,6 +4,7 @@
     "ejs": "^3.1.6",
     "ejs-mate": "^3.0.0",
     "express": "^4.17.1",
+    "method-override": "^3.0.0",
     "mongoose": "^6.1.1",
     "morgan": "^1.10.0"
   },
@@ -14,7 +15,6 @@
   "description": "* Create a UI based on your imagination using any frontend you know\r * This UI will contain form + a table + buttons(update, delete, add\r * Form will contain 4 fields:\r    * Name\r    * Phone number\r    * Email\r    * hobbies\r Save button\r * Table will contain 7 Attributes:\r    * select:(checkbox Attribute to select row/rows) \r    * ID: serial number\r    * Name: name \r    * Phone Number\r    * Email\r    * Hobbies\r    * Update/delete\r * Use MongoDB for creating database and Node.js and express.js for creating APIs\r * Buttons:\r    * Send: To send data of selected Row/Rows on email info@redpositive.in\r    * Add New Data to open pop up form to ADD New entry in the table\r 1. Create an Add button to open a pop up form which will contain 4 fields as mentioned above.\r 2. Provide all the validations to all fields in form\r 3. Create a table to display data from database\r 4. Add form data in database by save button\r 5. Provide a button to send selected row/rows data to email : info@redpositive.in\r 6. UI is not that much important backend and DB structure is more important\r 7. Host task on either Heroku or Netlify\r 8. Push code on github and provide the link of public repo",
   "version": "1.0.0",
   "main": "server.js",
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/pkkrsingh877/form-app.git"

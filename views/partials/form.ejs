@@ -1,0 +1,66 @@
+<form class="form-control">
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" name="name">
+        <p class="name error text-danger"></p>
+      </div>
+      <div class="mb-3">
+        <label for="phoneNumber" class="form-label">Phone Number</label>
+        <input type="text" class="form-control" id="phoneNumber" name="phoneNumber">
+        <p class="phoneNumber error text-danger"></p>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="email" name="email">
+        <p class="email error text-danger"></p>
+      </div>
+    <div class="mb-3">
+      <label for="hobbies" class="form-label">Hobbies</label>
+      <input type="text" class="form-control" id="hobbies" name="hobbies">
+      <p class="text-muted">Enter Hobbies in comma separated format... Example: playing cards, walking dog, etc</p>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+  </form>
+
+  <script>
+    const form = document.querySelector('form');
+    const name = document.querySelector('.name.error');
+    const email = document.querySelector('.email.error');
+    const phoneNumber = document.querySelector('.phoneNumber.error');
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault(); 
+        name.textContent = '';
+        phoneNumber.textContent = '';
+        email.textContent = '';
+        try {
+            const res = await fetch('/', {
+                method: 'POST',
+                body: JSON.stringify({
+                    name: form.name.value,
+                    email: form.email.value,
+                    phoneNumber: form.phoneNumber.value,
+                    hobbies: form.hobbies.value
+                }),
+                headers: { 'Content-Type': 'application/json' }
+            });
+            const data = await res.json();
+            if(data.error){                  
+                if(data.error.name){
+                    name.textContent = data.error.name
+                }
+                if(data.error.phoneNumber){
+                    phoneNumber.textContent = data.error.phoneNumber
+                }
+                if(data.error.email){
+                    email.textContent = data.error.email
+                }
+            }
+            if(data.person){
+                location.assign(`/`);
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    });
+</script>
