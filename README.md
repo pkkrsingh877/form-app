@@ -1,8 +1,6 @@
-﻿# Backend developer internship coding task
-
+﻿# Coding task
 
 ## CRUDS(Create, Read, Update, Delete and Send)
-
 
 ### Task Instructions:
 
