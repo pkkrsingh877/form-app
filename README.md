@@ -25,11 +25,11 @@ Save button
 * Buttons:
    * Send: To send data of selected Row/Rows on your email
    * Add New Data to open pop up form to ADD New entry in the table
-1. [x]Create an Add button to open a pop up form which will contain 4 fields as mentioned above.
-2. [x]Provide all the validations to all fields in form
-3. [x]Create a table to display data from database
-4. [x]Add form data in database by save button
-5. []Provide a button to send selected row/rows data to my email
-6. [x]UI is not that much important backend and DB structure is more important
-7. []Host task on either Heroku or Netlify
-8. [x]Push code on github and provide the link of public repo
+1. [x] Create an Add button to open a pop up form which will contain 4 fields as mentioned above.
+1. [x] Provide all the validations to all fields in form
+1. [x] Create a table to display data from database
+1. [x] Add form data in database by save button
+1. [] Provide a button to send selected row/rows data to my email
+1. [x] UI is not that much important backend and DB structure is more important
+1. [] Host task on either Heroku or Netlify
+1. [x] Push code on github and provide the link of public repo
